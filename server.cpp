@@ -92,7 +92,7 @@ int main()
     int nfds = epoll_wait(epid, events, MAX_SERVER_EVENT, 20);
     for (int i = 0; i < nfds; ++i)
     {
-      //std::cout << "nfds:" << i << "  事件:" << (int)events[i].events << std::endl;
+      //std::cout << "nfds:" << i << "  event:" << (int)events[i].events << std::endl;
       if (events[i].data.fd == sockid)
       {
         sockaddr_in caddr;
@@ -143,7 +143,7 @@ int main()
           buffer.resize(MAX_BUFSIZE);
 
           int ret = ::recv(clientsock, &(buffer[0]), MAX_BUFSIZE, 0);
-          std::cout << "socket 接受data," << ret << std::endl;
+          std::cout << "socket recv data size: " << ret << std::endl;
           if (ret > 0 && ret < MAX_BUFSIZE)
           {
             std::cout << "data: ";
